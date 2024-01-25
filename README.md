@@ -46,8 +46,7 @@ During the development of this project, challenges may include configuring AWS r
 
 This project is recommended for employers interested in adopting serverless architectures on AWS. It serves as a practical example showcasing the benefits and challenges of serverless development. Employers can use this project as a learning resource for their development teams, encompassing testing strategies and CI/CD practices.
 
-## Key Takeaways 
-# Key Takeaways from the Lab Project
+## Key Takeaways from the Lab Project
 
 ## 1. Practical Application of Serverless Concepts
 
