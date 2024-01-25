@@ -3,8 +3,7 @@ Delve into the AWS-Projects repository through this comprehensive documentation.
 
 ## Project list 
 1. Configuring a Serverless Web Application using AWS
-
-## Project Details:
+# Project Details:
 # 1. Configuring a Serverless Web Application using AWS 
 * Description:
 This project demonstrates how to configure a serverless web application 
