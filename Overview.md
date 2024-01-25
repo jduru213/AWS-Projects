@@ -16,6 +16,10 @@ This project demonstrates the development and deployment of a serverless web app
 - [Contributing](#contributing)
 - [License](#license)
 
+# What is a Serverless Web Application?
+
+A serverless web application is a modern approach to building web services where developers focus solely on writing code for specific functions without managing the underlying servers. In this architecture, functions are triggered by events, such as HTTP requests or data changes, and automatically scale based on demand. Cloud providers handle server management, allowing for faster development cycles, cost-effective scaling, and efficient resource utilization. This GitHub project explores the principles of serverless web applications using popular serverless platforms like AWS Lambda, Azure Functions, and Google Cloud Functions.
+
 ## Purpose
 
 The sole purpose of this project is to showcase the development and deployment of a serverless web application using AWS services. By adopting serverless architecture, developers can focus on writing code without the burden of managing servers, leading to increased efficiency and agility in application development.
@@ -44,7 +48,7 @@ During the development of this project, challenges may include configuring AWS r
 
 ## Recommendation
 
-This project is recommended for employers interested in adopting serverless architectures on AWS. It serves as a practical example showcasing the benefits and challenges of serverless development. Employers can use this project as a learning resource for their development teams, encompassing testing strategies and CI/CD practices.
+If you're an employer thinking about implementing serverless architectures on AWS, I highly recommend looking into this solution. It serves as a practical example of both the benefits and challenges of serverless development. Employers can use this project as a valuable learning resource for their development teams, offering insights into effective testing strategies and CI/CD practices.
 
 ## Key Takeaways from the Lab Project
 
@@ -68,5 +72,5 @@ To get started with this project, follow the steps below:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/serverless-web-app.git
+   git clone https://github.com/jduru213/serverless-web-app.git
    cd serverless-web-app
