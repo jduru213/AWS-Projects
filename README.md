@@ -1,5 +1,5 @@
-## Project Overview:
-Delve into the AWS-Projects repository through this comprehensive documentation. This repository is a treasure trove of hands-on projects meticulously crafted to delve into various facets of AWS services, offering practical insights and expertise in deploying diverse tools and technologies.
+## Project Overview: AWS-Projects
+This repository is a gateway to hands-on projects designed to explore various facets of AWS services. With this user-friendly guide, dive into practical experience, deploying diverse tools and technologies.
 
 ## Project list 
 1. Configuring a Serverless Web Application using AWS
