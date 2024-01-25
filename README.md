@@ -11,11 +11,11 @@ Description:
  Resources Used  
 - AWS S3 bucket for storing web application assets
 - AWS Cloud9 for a cloud-based integrated development environment (IDE)
-- AWS Lambda for serverless compute
+- AWS Lambda for serverless computing
 - Amazon API Gateway for RESTful API exposure
 
 Getting Started:
-Each project within the repository is neatly organized in its dedicated folder. To kickstart your exploration of this specific project, navigate to the corresponding folder and follow the comprehensive instructions outlined in the project's README file. The README file serves as your guide, offering detailed steps, prerequisites, and configuration instructions for a seamless project completion.
+Each project within the repository is neatly organized in its dedicated folder. To start exploring this specific project, you can just go to the corresponding folder and follow the comprehensive instructions outlined in the project's README file. The README file utilizes personal hands-on experience as well as a guide, blog, and configuration instructions for project completion.
 
 Contact:
 For inquiries or any questions related to this repository or its projects, feel free to reach out to Justin Duru at jduru213@gmail.com.
