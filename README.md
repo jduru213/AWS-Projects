@@ -5,11 +5,10 @@ Delve into the AWS-Projects repository through this comprehensive documentation.
 1. Configuring a Serverless Web Application using AWS
 ## Project Details:
 # 1. Configuring a Serverless Web Application using AWS 
-* Description:
-This project demonstrates how to configure a serverless web application
+Description:
+- This project demonstrates how to configure a serverless web application
 
-* Resources Used
-  
+ Resources Used  
 - AWS S3 bucket for storing web application assets
 - AWS Cloud9 for a cloud-based integrated development environment (IDE)
 - AWS Lambda for serverless compute
