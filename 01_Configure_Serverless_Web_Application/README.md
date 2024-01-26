@@ -216,9 +216,10 @@ After pushing the files to GitHub's main branch, the GitHub Actions CI/CD pipeli
 The GitHub actions runner executes the defined pipeline steps in the file. It retrieves the code from your repository, configures Python, and establishes AWS credentials using the secrets stored in GitHub.
 
 
-## Tests
+## Step 6: Testing the Application 
 
-Tests are defined in the `tests` folder in this project. Use PIP to install the test dependencies and run tests.
+Testing your AWS SAM application typically involves two main aspects: unit testing and integration testing. Since your GitHub Actions workflow includes the deployment of the SAM application, I'll guide you on how to set up both types of testing:
+
 
 ```bash
 github-actions-with-aws-sam$ pip install -r tests/requirements.txt --user
