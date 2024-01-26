@@ -12,9 +12,7 @@ This project demonstrates the development and deployment of a serverless web app
 - [Benefits & Flaws](#benefits--flaws)
 - [Recommendation](#recommendation)
 - [Getting Started](#getting-started)
-- [Testing Locally](#testing-locally)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 # What is a Serverless Web Application?
 
