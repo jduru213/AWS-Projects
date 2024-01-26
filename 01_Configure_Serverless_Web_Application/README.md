@@ -7,26 +7,9 @@ This project contains source code and supporting files for a serverless applicat
 - tests - Unit tests for the application code. 
 - template.yaml - A template that defines the application's AWS resources.
 
-The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
-
-If you prefer to use an integrated development environment (IDE) to build and test your application, you can use the AWS Toolkit.  
-The AWS Toolkit is an open-source plug-in for popular IDEs that uses the SAM CLI to build and deploy serverless applications on AWS. The AWS Toolkit also adds a simplified step-through debugging experience for Lambda function code. See the following links to get started.
-
-* [CLion](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [GoLand](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [IntelliJ](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [WebStorm](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [Rider](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [PhpStorm](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [PyCharm](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [RubyMine](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [DataGrip](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [VS Code](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/welcome.html)
-* [Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/welcome.html)
-
 ## Getting Started
 
-Before you start the project, consider the following options based on your preference for source code management:
+- Before you start the project, consider the following options based on your preference for source code management:
 
 ### Option 1: Use an Existing GitHub Repository
 
@@ -48,7 +31,8 @@ If you prefer to create a custom repository using AWS CodeCommit, follow these s
 
 - After creating and deciding on your repository approach, you will later paste it into the Serverless Application Model Command Line Interface (SAM CLI) on AWS Cloud9
    * I decided to use the first approach for this LAB
-![image](https://github.com/jduru213/AWS-Projects/assets/112328773/9a029d2e-d50b-4d02-b469-6c20e187999f)
+     
+   ![image](https://github.com/jduru213/AWS-Projects/assets/112328773/9a029d2e-d50b-4d02-b469-6c20e187999f)
 
 
 ## Step 1: Creating the sample application
@@ -68,67 +52,169 @@ The Serverless Application Model Command Line Interface (SAM CLI) is an extensio
 2. **Install SAM CLI:**
    - Open a terminal in the AWS Cloud9 environment.
    - SAM CLI is already preinstalled in AWS Cloud9, so you can directly proceed to use SAM commands for building, testing, and deploying Lambda applications.
+   - Since SAM CLI is already preinstalled go ahead and input your repository; Here is my example of my cloning and inputting my GitHub repository
+     ![image](https://github.com/jduru213/AWS-Projects/assets/112328773/9a029d2e-d50b-4d02-b469-6c20e187999f)
+      
 
-3. **Build and Test Lambda Applications:**
+3. **Building Lambda Applications:**
    - Utilize SAM CLI commands within the Cloud9 environment for building, testing, and deploying Lambda applications.
    - Navigate to the parent of the cloned repository directory, and input the following:
   
 ```bash
-sam init -r python3.8 -n <"your_repository_name"> --app-template "hello-world"
+sam init -r python3.8 -n your_repository_name --app-template "hello-world"
 ```
-- Make sure to put the name of the repository you made either in GitHub or AWS codecommit 
+   - Make sure to put the name of the repository you made either in GitHub or AWS codecommit; Here is my example 
+![image](https://github.com/jduru213/AWS-Projects/assets/112328773/c537df47-54a9-4f21-9550-a116a25ca2a2)
+
+## Step 2: Testing Locally 
+AWS SAM enables local testing of your applications. It comes with a default event located in events/event.json, which contains a message body: {"message": "hello world"}.
+
+### Steps:
+
+1. **Execute the HelloWorldFunction Lambda function locally by providing it with the default event and inputting:**
+   -  ```bash
+      sam local invoke HelloWorldFunction -e events/event.json
+      ```
+![image](https://github.com/jduru213/AWS-Projects/assets/112328773/33bc3031-7936-4a17-b7eb-82e5617cf2aa)
+
+   - Should display: {"message": "hello world"}
+     
+![image](https://github.com/jduru213/AWS-Projects/assets/112328773/03dca73b-c00f-406c-a423-ad08ac7c9793)
+
+2. **Verify the functionality of the API Gateway in front of the Lambda function by initially launching the API on your local environment.**
+   - ``` bash
+     sam local start-api
+      ```
+   ![image](https://github.com/jduru213/AWS-Projects/assets/112328773/0e8f1641-fa68-4bd8-a314-860fb3b752f9)
+   
+3. **Utilize the 'curl' command to request the hello API.**
+    - ``` bash
+       curl http://127.0.0.1:3000/hello
+      ```
+      
+
+## Step 3: Generating the sam-pipeline.yml file
+
+In the context of GitHub, CI/CD (Continuous Integration/Continuous Deployment) pipelines are set up using a YAML file named sam-pipeline.yml. This file acts as a blueprint, defining the actions that should trigger a workflow, such as pushing changes to the main branch. Additionally, it specifies the necessary steps or tasks that need to be executed during the workflow.
+
+### Steps 
+
+1. **Create the directory: .github/workflows**
+    ``` bash
+       mkdir -p .github/workflows 
+      ```
+   - Here is my example:
+     
+     ![image](https://github.com/jduru213/AWS-Projects/assets/112328773/c5ce9b73-7e1a-4298-b21c-637e23a5af4e)
+
+        - Utilize the 'cd' command to navigate and change directories
+    
+2. **Create Amazon S3 Storage Bucket**
+   - In your AWS Management console, navigate to the S3 service and click on the "Create bucket" button
+   - Enter a unique name for your bucket in the "Bucket name" field.
+   - Choose the AWS region where you want to create the bucket
+   - You can leave the remaining configuration as the default
+      -![image](https://github.com/jduru213/AWS-Projects/assets/112328773/4d36601b-a7a6-405d-af79-984a2b5adace)
+
+     
+4.  **Produce a file named sam-pipeline.yml in the .github/workflows directory**
+   - ``` bash
+       mkdir sam-pipeline.yml
+      ```
+   - Navigate using:
+     ``` bash
+       cd sam-pipeline.yml
+      ```
+     
+4. **Modify the sam-pipeline.yml file to include the following:**
+   
+ - To open the editor on bash use
+    ``` bash
+       nano sam-pipeline.yml
+      ```
+    ![image](https://github.com/jduru213/AWS-Projects/assets/112328773/4e661f1d-e646-43ba-91ec-384cef23a819)
+   
+  - Then modify using the following:
+   ``` bash   
+   on:
+  push:
+    branches:
+      - main
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: aws-actions/setup-sam@v1
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ##region##
+      # sam build 
+      - run: sam build --use-container
+
+# Run Unit tests- Specify unit tests here 
+
+# sam deploy
+      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world --s3-bucket ##s3-bucket## --capabilities CAPABILITY_IAM --region ##region## 
+  ```
+![image](https://github.com/jduru213/AWS-Projects/assets/112328773/84fab869-b708-48e1-b49f-88698e504f2a)
+
+   - Make sure to replace ###s3-bucket## with the name you previously created to store the deployment package
+   - Make sure to also replace the ##region## with YOUR AWS region
+     
+![image](https://github.com/jduru213/AWS-Projects/assets/112328773/dbc0a311-5b93-4477-ba2b-b0da2aa61e6c)
 
 
-## Use the SAM CLI to build and test locally
+## Step 4: Setting up AWS credentials in GitHub
 
-Build your application with the `sam build --use-container` command.
+The purpose behind configuring AWS credentials in GitHub is to interact securely and with authorization. GitHub Actions and other tools can easily access AWS resources with the help of these credentials, which act as the authentication method. Such configuration protects the security and integrity of your cloud-based workflows by limiting access and modification of AWS resources linked to your projects. 
 
-```bash
-github-actions-with-aws-sam$ sam build --use-container
-```
+### Steps
+1. **Navigate to your Repository:**
+   Open your GitHub repository where you want to add secrets.
 
-The SAM CLI installs dependencies defined in `hello_world/requirements.txt`, creates a deployment package, and saves it in the `.aws-sam/build` folder.
+2. **Go to "Settings":**
+   Click on the "Settings" tab in the top navigation bar of your repository.
+   ![image](https://github.com/jduru213/AWS-Projects/assets/112328773/df549e58-94f1-4aae-a22e-bf2d950460e0)
 
-Test a single function by invoking it directly with a test event. An event is a JSON document that represents the input that the function receives from the event source. Test events are included in the `events` folder in this project.
 
-Run functions locally and invoke them with the `sam local invoke` command.
+4. **Access "Secrets":**
+   In the left sidebar, find and click on "Secrets" or "Secrets and variables" (depending on your GitHub version).
+   
+   ![image](https://github.com/jduru213/AWS-Projects/assets/112328773/72d45691-1e55-4476-b3d0-7779e1656403)
 
-```bash
-github-actions-with-aws-sam$ sam local invoke HelloWorldFunction --event events/event.json
-```
 
-The SAM CLI can also emulate your application's API. Use the `sam local start-api` to run the API locally on port 3000.
+6. **Click "New repository secret":**
+   Look for the button that says "New repository secret" or a similar option.
+   
+   ![image](https://github.com/jduru213/AWS-Projects/assets/112328773/6a2e41f9-2997-42a2-8e67-445e6f034154)
 
-```bash
-github-actions-with-aws-sam$ sam local start-api
-github-actions-with-aws-sam$ curl http://localhost:3000/
-```
 
-The SAM CLI reads the application template to determine the API's routes and the functions that they invoke. The `Events` property on each function's definition includes the route and method for each path.
+7. **Enter Secret Details:**
+   For this project create two secrets named AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and enter the key values.
+   
+ ![image](https://github.com/jduru213/AWS-Projects/assets/112328773/02c905f7-dc52-4589-97de-23d5f96779b0)   ![image](https://github.com/jduru213/AWS-Projects/assets/112328773/6cfbf3be-4642-4da3-afdc-77e648f42443)
 
-```yaml
-      Events:
-        HelloWorld:
-          Type: Api
-          Properties:
-            Path: /hello
-            Method: get
-```
 
-## Add a resource to your application
-The application template uses AWS Serverless Application Model (AWS SAM) to define application resources. AWS SAM is an extension of AWS CloudFormation with a simpler syntax for configuring common serverless application resources such as functions, triggers, and APIs. For resources not included in [the SAM specification](https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md), you can use standard [AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html) resource types.
+9. **Click "Add secret" or "Create secret":**
+   After entering the details, click the button to add the secret to your repository.
+   
+## Step 5: Deploying your application
 
-## Fetch, tail, and filter Lambda function logs
+Navigate to your local git repository and Add all the files, commit the changes, and push to GitHub.
 
-To simplify troubleshooting, SAM CLI has a command called `sam logs`. `sam logs` lets you fetch logs generated by your deployed Lambda function from the command line. In addition to printing the logs on the terminal, this command has several nifty features to help you quickly find the bug.
+ ``` bash
+git add.
+git commit -am "Add AWS SAM files"
+git push
+ ```
+After pushing the files to GitHub's main branch, the GitHub Actions CI/CD pipeline is automatically initiated, following the configuration specified in the sam-pipeline.yml file.
 
-`NOTE`: This command works for all AWS Lambda functions; not just the ones you deploy using SAM.
+The GitHub actions runner executes the defined pipeline steps in the file. It retrieves the code from your repository, configures Python, and establishes AWS credentials using the secrets stored in GitHub.
 
-```bash
-github-actions-with-aws-sam$ sam logs -n HelloWorldFunction --stack-name "github-actions-with-aws-sam" --tail
-```
-
-You can find more information and examples about filtering Lambda function logs in the [SAM CLI Documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-logging.html).
 
 ## Tests
 
