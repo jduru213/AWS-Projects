@@ -38,11 +38,9 @@ If you already have a GitHub repository you'd like to use and deploy, follow the
    cd <your_repo_directory>
 
 ### Option 2: Create a Custom Repository using AWS CodeCommit
-
 If you prefer to create a custom repository using AWS CodeCommit, follow these steps:
 
 1. Create a CodeCommit repository with a name of your choice.
-   
    ```bash
    # Replace <repository_name> with your desired repository name
    aws codecommit create-repository --repository-name <repository_name>
