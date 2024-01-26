@@ -2,6 +2,7 @@
 This repository is a gateway to hands-on projects designed to explore various facets of AWS services. With this user-friendly guide, dive into practical experience, deploying diverse tools and technologies.
 
 ## Project list 
+[https://github.com/jduru213/AWS-Projects/tree/main/01_Configure_Serverless_Web_Application]
 1. Configuring a Serverless Web Application using AWS
 ## Project Details:
 # 1. Configuring a Serverless Web Application using AWS 
