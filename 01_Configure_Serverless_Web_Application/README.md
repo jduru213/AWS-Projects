@@ -24,32 +24,58 @@ The AWS Toolkit is an open-source plug-in for popular IDEs that uses the SAM CLI
 * [VS Code](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/welcome.html)
 * [Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/welcome.html)
 
-## Deploy the sample application
+  ## Getting Started
 
-The Serverless Application Model Command Line Interface (SAM CLI) is an extension of the AWS CLI that adds functionality for building and testing Lambda applications. It uses Docker to run your functions in an Amazon Linux environment that matches Lambda. It can also emulate your application's build environment and API.
+Before you start the project, consider the following options based on your preference for source code management:
 
-To use the SAM CLI, you need the following tools.
+### Option 1: Use an Existing GitHub Repository
 
-* SAM CLI - [Install the SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
-* [Python 3 installed](https://www.python.org/downloads/)
-* Docker - [Install Docker community edition](https://hub.docker.com/search/?type=edition&offering=community)
+If you already have a GitHub repository you'd like to use and deploy, follow these steps:
 
-To build and deploy your application for the first time, run the following in your shell:
+1. Clone your GitHub repository.
+   ```bash
+   git clone <your_github_repo_url>
+   cd <your_repo_directory>
 
+### Option 2: Create a Custom Repository using AWS CodeCommit
+
+If you prefer to create a custom repository using AWS CodeCommit, follow these steps:
+
+1. Create a CodeCommit repository with a name of your choice.
+   
+   ```bash
+   # Replace <repository_name> with your desired repository name
+   aws codecommit create-repository --repository-name <repository_name>
+
+- After creating and deciding on your repository approach, you will later paste it into the Serverless Application Model Command Line Interface (SAM CLI) on AWS Cloud9
+
+## Step 1: Creating the sample application
+
+The Serverless Application Model Command Line Interface (SAM CLI) is an extension of the AWS CLI that facilitates building and testing Lambda applications. It leverages Docker to execute functions in an Amazon Linux environment, mirroring the Lambda environment. SAM CLI can also emulate your application's build environment and API.
+
+## Using SAM CLI with AWS Cloud9
+
+### Steps:
+
+1. **Create a Cloud9 Environment:**
+   - Open the AWS Cloud9 console.
+   - Click on "Create Environment" and follow the prompts to create a new environment.
+  
+![image](https://github.com/jduru213/AWS-Projects/assets/112328773/c75eacd9-39b0-4be6-a707-f9a96ce7022e)
+
+2. **Install SAM CLI:**
+   - Open a terminal in the AWS Cloud9 environment.
+   - SAM CLI is already preinstalled in AWS Cloud9, so you can directly proceed to use SAM commands for building, testing, and deploying Lambda applications.
+
+3. **Build and Test Lambda Applications:**
+- Utilize SAM CLI commands within the Cloud9 environment for building, testing, and deploying Lambda applications.
+- navigate to the parent of the cloned repository directory, and input the following:
+  
 ```bash
-sam build --use-container
-sam deploy --guided
+sam init -r python3.8 -n <"your_repository_name"> --app-template "hello-world"
 ```
+- Make sure to put the name of the repository you made either in GitHub or AWS codecommit 
 
-The first command will build the source of your application. The second command will package and deploy your application to AWS, with a series of prompts:
-
-* **Stack Name**: The name of the stack to deploy to CloudFormation. This should be unique to your account and region, and a good starting point would be something matching your project name.
-* **AWS Region**: The AWS region you want to deploy your app to.
-* **Confirm changes before deploy**: If set to yes, any change sets will be shown to you before execution for manual review. If set to no, the AWS SAM CLI will automatically deploy application changes.
-* **Allow SAM CLI IAM role creation**: Many AWS SAM templates, including this example, create AWS IAM roles required for the AWS Lambda function(s) included to access AWS services. By default, these are scoped down to the minimum required permissions. To deploy an AWS CloudFormation stack that creates or modifies IAM roles, the `CAPABILITY_IAM` value for `capabilities` must be provided. If permission isn't provided through this prompt, to deploy this example you must explicitly pass `--capabilities CAPABILITY_IAM` to the `sam deploy` command.
-* **Save arguments to samconfig.toml**: If set to yes, your choices will be saved to a configuration file inside the project, so that in the future you can just re-run `sam deploy` without parameters to deploy changes to your application.
-
-You can find your API Gateway Endpoint URL in the output values displayed after deployment.
 
 ## Use the SAM CLI to build and test locally
 
