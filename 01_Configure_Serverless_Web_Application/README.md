@@ -36,6 +36,7 @@ If you already have a GitHub repository you'd like to use and deploy, follow the
    ```bash
    git clone <your_github_repo_url>
    cd <your_repo_directory>
+   
 
 ### Option 2: Create a Custom Repository using AWS CodeCommit
 If you prefer to create a custom repository using AWS CodeCommit, follow these steps:
@@ -46,6 +47,9 @@ If you prefer to create a custom repository using AWS CodeCommit, follow these s
    aws codecommit create-repository --repository-name <repository_name>
 
 - After creating and deciding on your repository approach, you will later paste it into the Serverless Application Model Command Line Interface (SAM CLI) on AWS Cloud9
+* I decided to use the first approach for this LAB
+![image](https://github.com/jduru213/AWS-Projects/assets/112328773/9a029d2e-d50b-4d02-b469-6c20e187999f)
+
 
 ## Step 1: Creating the sample application
 
@@ -67,7 +71,7 @@ The Serverless Application Model Command Line Interface (SAM CLI) is an extensio
 
 3. **Build and Test Lambda Applications:**
 - Utilize SAM CLI commands within the Cloud9 environment for building, testing, and deploying Lambda applications.
-- navigate to the parent of the cloned repository directory, and input the following:
+- Navigate to the parent of the cloned repository directory, and input the following:
   
 ```bash
 sam init -r python3.8 -n <"your_repository_name"> --app-template "hello-world"
