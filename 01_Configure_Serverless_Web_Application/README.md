@@ -224,10 +224,10 @@ Testing your AWS SAM application typically involves two main aspects: unit testi
 ```bash
 github-actions-with-aws-sam$ pip install -r tests/requirements.txt --user
 # unit test
-github-actions-with-aws-sam$ python -m pytest tests/unit -v
+name-of-github-repository$ python -m pytest tests/unit -v
 # integration test, requiring deploying the stack first.
 # Create the env variable AWS_SAM_STACK_NAME with the name of the stack we are testing
-github-actions-with-aws-sam$ AWS_SAM_STACK_NAME="github-actions-with-aws-sam" python -m pytest tests/integration -v
+name-of-github-repository$ AWS_SAM_STACK_NAME="name-of-github-repository" python -m pytest tests/integration -v
 ```
 
 ## Cleanup
@@ -235,5 +235,5 @@ github-actions-with-aws-sam$ AWS_SAM_STACK_NAME="github-actions-with-aws-sam" py
 To delete the sample application that you created, use the AWS CLI. Assuming you used your project name for the stack name, you can run the following:
 
 ```bash
-sam delete --stack-name "github-actions-with-aws-sam"
+sam delete --stack-name "name-of-github-repository"
 ```
