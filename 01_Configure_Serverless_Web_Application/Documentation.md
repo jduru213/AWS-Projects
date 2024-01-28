@@ -16,7 +16,7 @@ This project demonstrates the development and deployment of a serverless web app
 
 # What is a Serverless Web Application?
 
-A serverless web application is a modern approach to building web services where developers focus solely on writing code for specific functions without managing the underlying servers. In this architecture, functions are triggered by events, such as HTTP requests or data changes, and automatically scale based on demand. Cloud providers handle server management, allowing for faster development cycles, cost-effective scaling, and efficient resource utilization. This GitHub project explores the principles of serverless web applications using popular serverless platforms like AWS Lambda, Azure Functions, and Google Cloud Functions.
+A serverless web application is a modern approach to building web services where developers focus solely on writing code for specific functions without managing the underlying servers. In this architecture, functions are triggered by events, such as HTTP requests or data changes, and automatically scale based on demand. Cloud providers handle server management, allowing for faster development cycles, cost-effective scaling, and efficient resource utilization. This GitHub project explores the principles of serverless web applications using popular serverless platforms.
 
 ## Purpose
 
