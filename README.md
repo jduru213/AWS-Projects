@@ -3,10 +3,7 @@ This repository is a gateway to hands-on projects designed to explore various fa
 
 ## Project list 
  1. [Configuring a Serverless Web Application using AWS](https://github.com/jduru213/AWS-Projects/tree/main/01_Configure_Serverless_Web_Application) - [(Documentation)](https://github.com/jduru213/AWS-Projects/blob/8973e1ad60da855283d42ef6aabe5d7c38fa1787/01_Configure_Serverless_Web_Application/Documentation.md)
- 2. Build an AWS Web Application Firewall - (Documentation)
- 3. Deploy AWS Security Hub Automation using AutoShield - (Documentation)
-
-
+ 
 ## Project Details:
 # 1. Configuring a Serverless Web Application using AWS 
 Description:
